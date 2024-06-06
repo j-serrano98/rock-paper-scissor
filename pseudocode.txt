@@ -1,5 +1,5 @@
-Player make a move
 Computer make a move
+Player make a move
 Compare moves
 	Get player move
 	Get Computer move
