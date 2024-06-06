@@ -1,0 +1,18 @@
+Player make a move
+Computer make a move
+Compare moves
+	Get player move
+	Get Computer move
+	If player move is rock
+		if computer move is rock then is even
+		if computer move is paper then player loses
+		if computer move is scissors then player wins
+	If player move is paper
+		if computer move is rock then player wins
+		if computer move is paper then is even
+		if computer move is scissors then player loses
+	If player move is scissors
+		if computer move is rock then player loses
+		if computer move is paper then player wins
+		if computer move is scissors then is even
+Show Results
