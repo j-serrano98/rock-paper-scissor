@@ -101,12 +101,13 @@ function playGame(humanChoice) {
     humanScore = 0;
     computerScore = 0;
   }
-  showResults();
+  showResults(humanSelection, computerSelection);
 }
 
-function showResults() {
+function showResults(humanChoice, computerChoice) {
+  const showMoves = document.querySelector('.show-moves');
   const resultsContainer = document.querySelector('.results');
-  resultsContainer.textContent = `Results:
-Human: ${humanScore} - Computer: ${computerScore}`;
+  showMoves.textContent = `You picked: ${humanChoice} - Computer picked: ${computerChoice}`
+  resultsContainer.textContent = `Results: Human: ${humanScore} - Computer: ${computerScore}`;
 }
 
