@@ -1,3 +1,23 @@
+let body = document.querySelector('body');
+
+let humanScore = 0;
+let computerScore = 0;
+
+body.addEventListener('click', (e) => {
+  let target = e.target;
+
+  switch(target.id) {
+    case 'rock':
+      playGame('rock');
+      break;
+    case 'paper':
+      playGame('paper');
+      break;
+    case 'scissors':
+      playGame('scissors');
+      break;
+  }
+});
 
 function getComputerChoice() {
   const computerMove = Math.random();
@@ -57,28 +77,36 @@ ${result}`)
 return result;
 }
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+
+function playGame(humanChoice) {
   
+  let humanSelection = humanChoice;
+  let computerSelection = getComputerChoice();
+
+  const getResult = playRound(humanSelection, computerSelection);
+
+  if (getResult === 'You win') {
+    humanScore++;
+  } else if (getResult === 'You lose') {
+    computerScore++;
+  } 
+
   
-  for (let i = 0; i < 5; i++) {
-
-    let humanSelection = getHumanChoice();
-    let computerSelection = getComputerChoice();
-
-    const getResult = playRound(humanSelection, computerSelection);
-
-    if (getResult === 'You win') {
-      humanScore++;
-    } else if (getResult === 'You lose') {
-      computerScore++;
-    } 
-    console.log(`Human ${humanScore} - Computer ${computerScore}`)
+  if (humanScore === 5) {
+    alert('Congrats, You win!');
+    humanScore = 0;
+    computerScore = 0;
+  } else if (computerScore === 5) {
+    alert('Sorry, better luck for the next time');
+    humanScore = 0;
+    computerScore = 0;
   }
-  
-  }
-  
+  showResults();
+}
 
-  playGame();
+function showResults() {
+  const resultsContainer = document.querySelector('.results');
+  resultsContainer.textContent = `Results:
+Human: ${humanScore} - Computer: ${computerScore}`;
+}
 
